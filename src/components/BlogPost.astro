@@ -13,7 +13,7 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
     {heroImage && <img width="720" height="420" class="post-main__img" loading="lazy" src={heroImage} alt={alt} />}
     <h1>{title}</h1>
     <time>{publishDate}</time>
-    <slot />
+    <slot class="pt-1" />
 </article>
 
 <style>
@@ -21,6 +21,10 @@ const { title, author, publishDate, heroImage, alt } = Astro.props;
     margin: 0 auto;
     padding: 1rem;
     max-width: 960px;
+  }
+
+  .pt-1 {
+    padding-top: 1rem;
   }
 
   .post-main__img {

@@ -1,5 +1,6 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
+import Nav from "../components/Nav.astro";
 // import Header from '../components/astro/Header.astro';
 // import Footer from '../components/astro/Footer.astro';
 
@@ -9,6 +10,7 @@ const {title, description, permalink, canonicalURL } = Astro.props;
   <head>
     <BaseHead title={title} description={description} permalink={permalink} canonicalURL={canonicalURL} />
   </head>
+  <Nav />
   <body>
     <!-- <Header/> -->
       <main>

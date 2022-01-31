@@ -42,3 +42,8 @@ npm run build
 Navigate to `src/data/site.js` and edit to match your site's information.
 
 Start writing new blog posts in Markdown at `src/pages/blog/`
+
+
+
+
+https://coolors.co/52489c-4062bb-59c3c3-ebebeb-f45b69
