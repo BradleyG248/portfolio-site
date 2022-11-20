@@ -1,12 +1,16 @@
 {
-  "name": "astro-minimal-starter",
-  "version": "v1.1.0",
-  "private": false,
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
   "scripts": {
+    "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build"
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "devDependencies": {
-    "astro": "^0.22.1"
+  "dependencies": {
+    "astro": "^1.4.0"
   }
 }

@@ -1,0 +1,50 @@
+/* Variables */
+:root {
+  /* Theme Colors */
+  --theme-bg: #ebedee;
+  --theme-on-bg: #343434;
+  --theme-primary: #288BFF;
+  --theme-secondary: #458958;
+  --theme-tertiary: #FF6666;
+
+  /* Theme Fonts */
+  --theme-header-font: 'Poppins', sans-serif;
+  --theme-body-font: 'Open Sans', sans-serif;
+
+  /* Font Sizes */
+  --font-size-xl: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
+  --font-size-lg: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
+  --font-size-base: clamp(1rem, calc(0.6rem + 1vw), 1.2rem);
+  /* Base Settings */
+  font-size: 20px;
+}
+
+/* Base Styles */
+body {
+  margin: 0;
+}
+
+section,
+div,
+span {
+
+  box-sizing: border-box;
+}
+
+/* Font Styles */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--theme-header-font);
+  font-size: var(--font-size-lg);
+}
+
+p,
+li {
+  font-family: var(--theme-body-font);
+  font-weight: 300;
+  font-size: var(--font-size-base);
+}

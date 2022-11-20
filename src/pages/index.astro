@@ -1,61 +1,76 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-
-let title = "Bradley's Site";
-let description = 'This is a starter repo for an blog built with Astro including open graph tags, canonical urls, RSS, sitemap support.';
-let permalink = 'https://example.com/';
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
 ---
 
-<BaseLayout title={title} description={description} permalink={permalink} canonicalURL={Astro.request.canonicalURL.href}>
-<div class="home-hero">
-    <h1>Bradley Graham</h1>
-</div>
-<div class="about-me">
-<div class="about-me-overlay">
-  <div class="about-me-content">
-    <h2>About Me</h2>
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus sunt illum alias hic laudantium fuga cupiditate. Iste soluta minus ea vero aliquid quas, mollitia ipsam magnam dignissimos laboriosam dolorum.</p>
-  </div>
-</div>
-</div>
-</BaseLayout>
+<Layout title="Welcome to Astro.">
+  <main>
+    <section class="home__title-screen">
+      <div class="overlay__layer--1"></div>
+      <div class="overlay__layer--2"></div>
+      <div class="overlay__layer--3"></div>
+      <div class="overlay__text">
+        <h1>Bradley Graham</h1>
+        <p>Full Stack Web Developer</p>
+      </div>
+    </section>
+  </main>
+</Layout>
 
-<style scoped>
-  .home-hero {
-    background-color: var(--primary-color);
-    min-height: 60vh;
-    padding: 3rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+<style>
+  /* Home Title Screen */
+  .home__title-screen {
+    position: relative;
+    background-color: var(--theme-bg);
+    overflow: hidden;
+    min-height: 100vh;
   }
-  .home-hero h1 {
-    color: var(--primary-light, white);
-    filter: drop-shadow(5px 12px 10px rgba(0,0,0,0.8));
-    font-size: 5rem;
+  .home__title-screen .overlay__layer--1,
+  .home__title-screen .overlay__layer--2,
+  .home__title-screen .overlay__layer--3 {
+    position: absolute;
+    transform-origin: bottom left;
+    transform: rotate(45deg) translateX(-50%);
+    z-index: 0;
+  }
+  .home__title-screen .overlay__layer--1 {
+    background-color: var(--theme-tertiary);
+    /* Triangle's width & height should be ~35vmax */
+    width: 49.5vmax;
+    height: 24.75vmax;
+    bottom: 0;
+    left: 0;
+  }
+  .home__title-screen .overlay__layer--2 {
+    background-color: var(--theme-secondary);
+    /* Triangle's width & height should be ~35vmax */
+    width: 84vmax;
+    height: 15vmax;
+    bottom: 19vmax;
+    left: 19vmax;
+  }
+  .home__title-screen .overlay__layer--3 {
+    background-color: var(--theme-primary);
+    /* Triangle's width & height should be ~35vmax */
+    width: 145vmax;
+    height: 97vmax;
+    bottom: 31.107vmax;
+    left: 31.107vmax;
+  }
+
+  .home__title-screen .overlay__text {
+    position: relative;
+    text-align: right;
+    z-index: 1;
+    color: white;
+    margin: 45vh 10% 0 0;
+    transform: translateY(-50%);
+  }
+  .home__title-screen .overlay__text h1 {
+    font-size: var(--font-size-xl);
     margin: 0;
   }
-  .about-me {
-    background: url("/assets/home-hero-lg.jpg"), rgba(0,0,0,0.5);
-    background-position: right;
-    background-size: cover;
-    height: 80vh;
-    min-height: 10rem;
-  }
-  .about-me-overlay {
-    display: flex;
-    align-items: center;
-    background-color: rgba(0,0,0,0.6);
-    padding: 2rem 1rem;
-    height: 100%;
-    width: 100%;
-  }
-  .about-me-content {
-    width: clamp(300px, 60vw, 800px);
-    background-color: var(--primary-background);
-    box-shadow: 6px 8px 12px rgba(0,0,0,0.8);
-    padding: 1rem;
-
+  .home__title-screen .overlay__text p {
+    margin: 0.5rem 0 0;
   }
 </style>
