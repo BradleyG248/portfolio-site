@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
+import Container from '../components/Container.astro';
 ---
 
 <Layout title="Welcome to Astro.">
@@ -14,6 +14,19 @@ import Card from '../components/Card.astro';
         <p>Full Stack Web Developer</p>
       </div>
     </section>
+    <Container>
+      <section class="home__bio">
+        <div class="bio__text">
+          <h2>About Me</h2>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium, itaque. Suscipit earum minus atque vero repudiandae quam quod officiis molestiae assumenda! Ratione sapiente natus iste, commodi quisquam hic. Illo, dolorem. Odio quam officiis placeat repudiandae in hic fuga ea, libero dolorem sit saepe cupiditate ab at consequatur aperiam minima quos et rem cumque quod exercitationem id consequuntur. Est, pariatur animi.</p>
+        </div>
+        <div class="bio__pic">
+          <picture>
+            <img src="https://picsum.photos/seed/picsum/900/600" alt="" />
+          </picture>
+        </div>
+      </section>
+    </Container>
   </main>
 </Layout>
 
@@ -62,15 +75,35 @@ import Card from '../components/Card.astro';
     position: relative;
     text-align: right;
     z-index: 1;
-    color: white;
     margin: 45vh 10% 0 0;
     transform: translateY(-50%);
   }
   .home__title-screen .overlay__text h1 {
+    color: white;
     font-size: var(--font-size-xl);
     margin: 0;
   }
   .home__title-screen .overlay__text p {
+    color: white;
     margin: 0.5rem 0 0;
+  }
+  /* Home Bio */
+  .home__bio {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .home__bio .bio__text,
+  .home__bio .bio__pic {
+    width: 50%;
+  }
+  .home__bio .bio__text {
+    display: inline-block;
+    padding: 0 2rem 0 0;
+  }
+  .home__bio .bio__pic {
+    display: inline-block;
+    padding: 0 0 0 2rem;
+  }
+  .home__bio .bio__pic img {
   }
 </style>

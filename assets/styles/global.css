@@ -15,6 +15,9 @@
   --font-size-xl: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
   --font-size-lg: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
   --font-size-base: clamp(1rem, calc(0.6rem + 1vw), 1.2rem);
+  /* Section Settings */
+  --section-spacing: 4rem;
+  --section-width: 1440px;
   /* Base Settings */
   font-size: 20px;
 }
@@ -22,6 +25,7 @@
 /* Base Styles */
 body {
   margin: 0;
+  background-color: var(--theme-bg);
 }
 
 section,
@@ -40,6 +44,8 @@ h5,
 h6 {
   font-family: var(--theme-header-font);
   font-size: var(--font-size-lg);
+  color: var(--theme-on-bg);
+  margin: 0.75em 0 0.25em;
 }
 
 p,
@@ -47,4 +53,11 @@ li {
   font-family: var(--theme-body-font);
   font-weight: 300;
   font-size: var(--font-size-base);
+  color: var(--theme-on-bg);
+  margin: 0 0 0.5em;
+}
+
+img {
+  max-width: 100%;
+  ;
 }
