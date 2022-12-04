@@ -18,8 +18,8 @@
   --theme-body-font: 'Open Sans', sans-serif;
 
   /* Font Sizes */
-  --font-size-xl: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
-  --font-size-lg: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
+  --font-size-xl: clamp(2.4rem, calc(1.6rem + 2.5vw), 3.5rem);
+  --font-size-lg: clamp(2rem, calc(1.6rem + 2.5vw), 3rem);
   --font-size-base: clamp(1rem, calc(0.6rem + 1vw), 1.2rem);
   --font-size-sm: clamp(0.85rem, calc(0.5rem + 0.85vw), 1rem);
   /* Section Settings */
@@ -126,6 +126,12 @@ img {
 }
 
 @media screen and (max-width: 960px) {
+  :root {
+    --section-width: 728px;
+  }
+}
+
+@media screen and (max-width: 768px) {
   :root {
     --section-width: 600px;
   }

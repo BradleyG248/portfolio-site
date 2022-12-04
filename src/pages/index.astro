@@ -48,6 +48,57 @@ import Container from '../components/Container.astro';
               <a href="" class="btn-secondary btn-solid">Website</a>
             </div>
           </div>
+          <div class="portfolio__card">
+            <div class="preview">
+              <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+              <video playsinline muted loop preload="none" class="preview-video">
+                <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+                <!-- <source src="movie.ogg" type="video/ogg" /> -->
+              </video>
+            </div>
+            <h3>Gammie Homecare</h3>
+            <div class="description">
+              <p>Ecommerce</p>
+              <p>Web Application</p>
+            </div>
+            <div class="links">
+              <a href="" class="btn-secondary btn-solid">Website</a>
+            </div>
+          </div>
+          <div class="portfolio__card">
+            <div class="preview">
+              <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+              <video playsinline muted loop preload="none" class="preview-video">
+                <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+                <!-- <source src="movie.ogg" type="video/ogg" /> -->
+              </video>
+            </div>
+            <h3>Gammie Homecare</h3>
+            <div class="description">
+              <p>Ecommerce</p>
+              <p>Web Application</p>
+            </div>
+            <div class="links">
+              <a href="" class="btn-secondary btn-solid">Website</a>
+            </div>
+          </div>
+          <div class="portfolio__card">
+            <div class="preview">
+              <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+              <video playsinline muted loop preload="none" class="preview-video">
+                <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+                <!-- <source src="movie.ogg" type="video/ogg" /> -->
+              </video>
+            </div>
+            <h3>Gammie Homecare</h3>
+            <div class="description">
+              <p>Ecommerce</p>
+              <p>Web Application</p>
+            </div>
+            <div class="links">
+              <a href="" class="btn-secondary btn-solid">Website</a>
+            </div>
+          </div>
         </div>
       </section>
     </Container>
@@ -68,7 +119,7 @@ import Container from '../components/Container.astro';
         }
       });
       card.addEventListener('mouseout', (e) => {
-        if (e.relatedTarget.classList[0] === 'portfolio__work' && isPlaying) {
+        if (e.relatedTarget.classList[0] === 'portfolio__work' || (e.relatedTarget.classList[0] === 'home__portfolio' && isPlaying)) {
           const tourVideo = card.querySelector('.preview-video');
           if (tourVideo) {
             tourVideo.pause();
@@ -77,13 +128,43 @@ import Container from '../components/Container.astro';
         }
       });
     });
+
+    // Mobile preview settings
+    if (window.innerWidth < 960) {
+      const observer = new IntersectionObserver(
+        (e) => {
+          e.forEach((elem) => {
+            if (elem.intersectionRatio > 0.75) {
+              elem.target.classList.add('focused');
+              const tourVideo = elem.target.querySelector('.preview-video');
+              if (tourVideo) {
+                tourVideo.play();
+              }
+            } else {
+              elem.target.classList.remove('focused');
+              const tourVideo = elem.target.querySelector('.preview-video');
+              if (tourVideo) {
+                tourVideo.pause();
+              }
+            }
+          });
+        },
+        {
+          threshold: 0.75,
+        }
+      );
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
+    }
   }
 </script>
-<style>
+<style is:inline>
   main h2 {
     position: relative;
     display: inline-block;
     margin-top: 0;
+    z-index: 1;
   }
   main h2::before {
     content: '';
@@ -92,6 +173,7 @@ import Container from '../components/Container.astro';
     left: 5%;
     height: 2px;
     width: 45%;
+    z-index: -1;
   }
   main h2:nth-of-type(1)::before {
     background-color: var(--theme-primary);
@@ -147,6 +229,7 @@ import Container from '../components/Container.astro';
     text-align: right;
     z-index: 1;
     margin: 45vh 10% 0 0;
+    margin-right: calc(53vw - calc(var(--section-width) / 2));
     transform: translateY(-50%);
   }
   .home__title-screen .overlay__text h1 {
@@ -163,12 +246,15 @@ import Container from '../components/Container.astro';
     display: flex;
     flex-wrap: wrap;
   }
-  .home__bio .bio__text,
+  /* .home__bio .bio__text, */
   .home__bio .bio__pic {
     width: 50%;
+    display: inline-flex;
+    justify-content: center;
+    flex-flow: column;
   }
   .home__bio .bio__text {
-    display: inline-block;
+    width: 50%;
     padding: 0 2rem 0 0;
   }
   .home__bio .bio__text h2 {
@@ -177,29 +263,26 @@ import Container from '../components/Container.astro';
   .home__bio .bio__pic p:last-child {
     margin-bottom: 0;
   }
-  .home__bio .bio__pic {
-    display: inline-block;
-    padding: 0 0 0 2rem;
-  }
   .home__bio .bio__pic img {
-    box-shadow: 15px 15px 0 var(--theme-primary-accent);
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
   }
   /* Home Portfolio */
   .home__portfolio .portfolio__work {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 2rem;
   }
   .home__portfolio .portfolio__card {
-    padding: 0.75rem;
+    padding: 1rem;
     color: white;
     text-align: center;
     background: #2b2b2b;
-    background: linear-gradient(55deg, rgba(45, 67, 92, 1) 20%, rgba(43, 43, 43, 1) 20%, rgba(43, 43, 43, 1) 23%, rgba(91, 27, 27, 1) 23%, rgba(91, 27, 27, 1) 60%, rgba(43, 43, 43, 1) 60%, rgba(43, 43, 43, 1) 63%, rgba(40, 65, 47, 1) 63%);
+    background: linear-gradient(-45deg, rgba(45, 67, 92, 1) 20%, rgba(43, 43, 43, 1) 20%, rgba(43, 43, 43, 1) 23%, rgba(91, 27, 27, 1) 23%, rgba(91, 27, 27, 1) 60%, rgba(43, 43, 43, 1) 60%, rgba(43, 43, 43, 1) 63%, rgba(40, 65, 47, 1) 63%);
     border-radius: 0.5rem;
     transition: 250ms all;
   }
-  .home__portfolio .portfolio__card:hover {
+  .home__portfolio .portfolio__card:hover,
+  .home__portfolio .portfolio__card.focused {
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
     transition: 250ms all;
   }
@@ -208,6 +291,16 @@ import Container from '../components/Container.astro';
     padding-bottom: 52.9948%;
     position: relative;
     overflow: hidden;
+    transition: 150ms all;
+  }
+  .home__portfolio .portfolio__card:hover .preview,
+  .home__portfolio .portfolio__card.focused .preview {
+    margin: -1rem 0 0 -1rem;
+    width: calc(100% + 2rem);
+    padding-bottom: calc(52.9948% + 0.7949rem);
+    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    transition: 150ms all;
   }
   .portfolio__card .preview img,
   .portfolio__card .preview video {
@@ -219,6 +312,7 @@ import Container from '../components/Container.astro';
   }
   .home__portfolio .portfolio__card .description {
     margin-bottom: 1rem;
+    transition: 150ms all;
   }
   .home__portfolio .portfolio__card h3,
   .home__portfolio .portfolio__card p {
@@ -230,5 +324,44 @@ import Container from '../components/Container.astro';
   }
   .home__portfolio .portfolio__card p {
     font-size: var(--font-size-sm);
+  }
+  @media screen and (max-width: 1440px) {
+    .home__portfolio .portfolio__work {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .home__bio .bio__pic {
+      order: 1;
+      width: 100%;
+      margin-bottom: calc(var(--section-spacing) / 2);
+    }
+    .home__bio .bio__text {
+      order: 2;
+      width: 100%;
+      padding: 0;
+    }
+    .home__portfolio .portfolio__work {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .home__title-screen .overlay__text {
+      background-color: var(--theme-primary-accent);
+      display: inline-block;
+      float: right;
+      padding: 2rem;
+      width: min-content;
+      margin: 45vh 2rem 0 0;
+    }
+    .home__portfolio .portfolio__work {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media screen and (max-width: 400px) {
+    .home__title-screen .overlay__text {
+      padding: 1.25rem;
+      margin: 45vh 1.25rem 0 0;
+    }
   }
 </style>
