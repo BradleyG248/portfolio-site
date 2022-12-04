@@ -4,8 +4,14 @@
   --theme-bg: #ebedee;
   --theme-on-bg: #343434;
   --theme-primary: #288BFF;
+  --theme-primary-accent: #2d435c;
+  --theme-on-primary: white;
   --theme-secondary: #458958;
+  --theme-secondary-accent: #28412F;
+  --theme-on-secondary: white;
   --theme-tertiary: #FF6666;
+  --theme-tertiary-accent: #5B1B1B;
+  --theme-on-tertiary: white;
 
   /* Theme Fonts */
   --theme-header-font: 'Poppins', sans-serif;
@@ -15,9 +21,10 @@
   --font-size-xl: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
   --font-size-lg: clamp(2.5rem, calc(1.6rem + 2.5vw), 3.2rem);
   --font-size-base: clamp(1rem, calc(0.6rem + 1vw), 1.2rem);
+  --font-size-sm: clamp(0.85rem, calc(0.5rem + 0.85vw), 1rem);
   /* Section Settings */
   --section-spacing: 4rem;
-  --section-width: 1440px;
+  --section-width: 1400px;
   /* Base Settings */
   font-size: 20px;
 }
@@ -60,4 +67,66 @@ li {
 img {
   max-width: 100%;
   ;
+}
+
+/* Buttons */
+.btn-solid {
+  font-family: var(--theme-body-font);
+  font-size: var(--font-size-base);
+  font-weight: 300;
+  padding: 0.25rem 0.75rem;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: 150ms all;
+}
+
+.btn-solid.btn-primary {
+  background-color: var(--theme-primary);
+  color: var(--theme-on-primary);
+  /* border: 2px solid var(--theme-primary-accent); */
+}
+
+.btn-solid.btn-primary:hover {
+  background-color: var(--theme-primary-accent);
+  transition: 150ms all;
+}
+
+.btn-solid.btn-secondary {
+  background-color: var(--theme-secondary);
+  color: var(--theme-on-secondary);
+  /* border: 2px solid var(--theme-secondary-accent); */
+}
+
+.btn-solid.btn-secondary:hover {
+  background-color: var(--theme-secondary-accent);
+  transition: 150ms all;
+}
+
+.btn-solid.btn-tertiary {
+  background-color: var(--theme-tertiary);
+  color: var(--theme-on-tertiary);
+  /* border: 2px solid var(--theme-tertiary-accent); */
+}
+
+.btn-solid.btn-tertiary:hover {
+  background-color: var(--theme-tertiary-accent);
+  transition: 150ms all;
+}
+
+@media screen and (max-width: 1440px) {
+  :root {
+    --section-width: 1160px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  :root {
+    --section-width: 920px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  :root {
+    --section-width: 600px;
+  }
 }

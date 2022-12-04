@@ -27,10 +27,81 @@ import Container from '../components/Container.astro';
         </div>
       </section>
     </Container>
+    <Container>
+      <section class="home__portfolio">
+        <h2>My Work</h2>
+        <div class="portfolio__work">
+          <div class="portfolio__card">
+            <div class="preview">
+              <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+              <video playsinline muted loop preload="none" class="preview-video">
+                <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+                <!-- <source src="movie.ogg" type="video/ogg" /> -->
+              </video>
+            </div>
+            <h3>Gammie Homecare</h3>
+            <div class="description">
+              <p>Ecommerce</p>
+              <p>Web Application</p>
+            </div>
+            <div class="links">
+              <a href="" class="btn-secondary btn-solid">Website</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </Container>
   </main>
 </Layout>
-
+<script>
+  const cards = document.querySelectorAll('.portfolio__card');
+  if (cards) {
+    cards.forEach((card) => {
+      let isPlaying = false;
+      card.addEventListener('mouseover', (e) => {
+        if (e.target == e.currentTarget && !isPlaying) {
+          const tourVideo = card.querySelector('.preview-video');
+          if (tourVideo) {
+            tourVideo.play();
+            isPlaying = true;
+          }
+        }
+      });
+      card.addEventListener('mouseout', (e) => {
+        if (e.relatedTarget.classList[0] === 'portfolio__work' && isPlaying) {
+          const tourVideo = card.querySelector('.preview-video');
+          if (tourVideo) {
+            tourVideo.pause();
+            isPlaying = false;
+          }
+        }
+      });
+    });
+  }
+</script>
 <style>
+  main h2 {
+    position: relative;
+    display: inline-block;
+    margin-top: 0;
+  }
+  main h2::before {
+    content: '';
+    position: absolute;
+    top: 80%;
+    left: 5%;
+    height: 2px;
+    width: 45%;
+  }
+  main h2:nth-of-type(1)::before {
+    background-color: var(--theme-primary);
+  }
+  main h2:nth-of-type(2)::before {
+    background-color: var(--theme-secondary);
+  }
+  main h2:nth-of-type(3)::before {
+    background-color: var(--theme-tertiary);
+  }
   /* Home Title Screen */
   .home__title-screen {
     position: relative;
@@ -100,10 +171,64 @@ import Container from '../components/Container.astro';
     display: inline-block;
     padding: 0 2rem 0 0;
   }
+  .home__bio .bio__text h2 {
+    margin-top: 0;
+  }
+  .home__bio .bio__pic p:last-child {
+    margin-bottom: 0;
+  }
   .home__bio .bio__pic {
     display: inline-block;
     padding: 0 0 0 2rem;
   }
   .home__bio .bio__pic img {
+    box-shadow: 15px 15px 0 var(--theme-primary-accent);
+  }
+  /* Home Portfolio */
+  .home__portfolio .portfolio__work {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+  }
+  .home__portfolio .portfolio__card {
+    padding: 0.75rem;
+    color: white;
+    text-align: center;
+    background: #2b2b2b;
+    background: linear-gradient(55deg, rgba(45, 67, 92, 1) 20%, rgba(43, 43, 43, 1) 20%, rgba(43, 43, 43, 1) 23%, rgba(91, 27, 27, 1) 23%, rgba(91, 27, 27, 1) 60%, rgba(43, 43, 43, 1) 60%, rgba(43, 43, 43, 1) 63%, rgba(40, 65, 47, 1) 63%);
+    border-radius: 0.5rem;
+    transition: 250ms all;
+  }
+  .home__portfolio .portfolio__card:hover {
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
+    transition: 250ms all;
+  }
+  .home__portfolio .portfolio__card .preview {
+    width: 100%;
+    padding-bottom: 52.9948%;
+    position: relative;
+    overflow: hidden;
+  }
+  .portfolio__card .preview img,
+  .portfolio__card .preview video {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+  }
+  .home__portfolio .portfolio__card .description {
+    margin-bottom: 1rem;
+  }
+  .home__portfolio .portfolio__card h3,
+  .home__portfolio .portfolio__card p {
+    color: white;
+  }
+  .home__portfolio .portfolio__card h3 {
+    margin: 0.5em 0 0.5em;
+    font-size: var(--font-size-base);
+  }
+  .home__portfolio .portfolio__card p {
+    font-size: var(--font-size-sm);
   }
 </style>
