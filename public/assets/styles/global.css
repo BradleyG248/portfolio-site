@@ -25,6 +25,7 @@
   /* Section Settings */
   --section-spacing: 4rem;
   --section-width: 1400px;
+  --section-alt-width: 1160px;
   /* Base Settings */
   font-size: 20px;
 }
@@ -116,12 +117,14 @@ img {
 @media screen and (max-width: 1440px) {
   :root {
     --section-width: 1160px;
+    --section-alt-width: 920px;
   }
 }
 
 @media screen and (max-width: 1200px) {
   :root {
     --section-width: 920px;
+    --section-alt-width: 728px;
   }
 }
 

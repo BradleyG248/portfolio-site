@@ -1,0 +1,49 @@
+---
+import Container from './Container.astro';
+---
+
+<header>
+  <Container noSpace={true}>
+    <nav class="main__nav">
+      <ul>
+        <li><a href="/">Portfolio</a></li>
+        <li><a href="/about">About Me</a></li>
+      </ul>
+    </nav>
+  </Container>
+</header>
+
+<style>
+  header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .main__nav ul {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 120px;
+    padding: 1rem 0;
+    box-sizing: border-box;
+    gap: 2rem;
+    padding: 0;
+    margin: 0;
+  }
+  .main__nav li {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+  }
+  .main__nav li a {
+    text-decoration: none;
+    color: var(--theme-on-primary);
+    transition: 150ms all;
+  }
+  .main__nav li a:hover {
+    color: var(--theme-on-bg);
+    transition: 150ms all;
+  }
+</style>

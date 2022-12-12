@@ -1,7 +1,12 @@
 ---
+export interface Props {
+  noSpace?: boolean;
+  altWidth?: boolean;
+}
+const { noSpace, altWidth } = Astro.props;
 ---
 
-<div class={`container`}>
+<div class={`container${noSpace ? ' no-spacing' : ''}${altWidth ? ' alt-width' : ''}`}>
   <slot />
 </div>
 
@@ -10,5 +15,11 @@
     margin: var(--section-spacing) auto;
     max-width: var(--section-width);
     padding: 0 1rem;
+  }
+  .no-spacing {
+    margin: 0 auto;
+  }
+  .alt-width {
+    max-width: var(--section-alt-width);
   }
 </style>
