@@ -1,0 +1,131 @@
+---
+import Container from "./Container.astro";
+---
+
+<Container>
+  <section class="home__portfolio">
+    <h2>Portfolio</h2>
+    <div class="portfolio__work">
+      <div class="portfolio__card" id="gammie">
+        <div class="preview">
+          <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="Gammie Homecare Homepage" />
+          <video playsinline muted loop preload="none" class="preview-video">
+            <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+          </video>
+        </div>
+        <h3>Gammie Homecare</h3>
+        <div class="description">
+          <p>Ecommerce</p>
+          <p>Web Application</p>
+        </div>
+        <div class="links">
+          <a href="https://gammie.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
+        </div>
+      </div>
+      <div class="portfolio__card" id="alphaseo">
+        <div class="preview">
+          <img src="/assets/portfolio/alphaseo/thumbnail.jpg" alt="" />
+          <video playsinline muted loop preload="none" class="preview-video">
+            <source src="/assets/portfolio/alphaseo/tour.webm" type="video/webm" />
+          </video>
+        </div>
+        <h3>Alpha SEO</h3>
+        <div class="description">
+          <p>Artificial Intelligence</p>
+          <p>Web Application</p>
+        </div>
+        <div class="links">
+          <a href="https://alphaseo.webmarkets.ai/" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
+        </div>
+      </div>
+      <div class="portfolio__card" id="francini">
+        <div class="preview">
+          <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+          <video playsinline muted loop preload="none" class="preview-video">
+            <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+          </video>
+        </div>
+        <h3>Gammie Homecare</h3>
+        <div class="description">
+          <p>Ecommerce</p>
+          <p>Web Application</p>
+        </div>
+        <div class="links">
+          <a href="" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
+        </div>
+      </div>
+      <div class="portfolio__card" id="westside">
+        <div class="preview">
+          <img src="/assets/portfolio/gammie/thumbnail.jpg" alt="" />
+          <video playsinline muted loop preload="none" class="preview-video">
+            <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
+          </video>
+        </div>
+        <h3>Gammie Homecare</h3>
+        <div class="description">
+          <p>Ecommerce</p>
+          <p>Web Application</p>
+        </div>
+        <div class="links">
+          <a href="" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Container>
+<link rel="stylesheet" href="/styles/portfolio.css" />
+<script>
+  const cards = document.querySelectorAll(".portfolio__card");
+  if (cards) {
+    cards.forEach((card) => {
+      let isPlaying = false;
+      card.addEventListener("mouseover", (e) => {
+        if (e.target == e.currentTarget && !isPlaying) {
+          const tourVideo = card.querySelector(".preview-video");
+          if (tourVideo) {
+            tourVideo.play();
+            isPlaying = true;
+          }
+        }
+      });
+      card.addEventListener("mouseout", (e) => {
+        if (!card.contains(e.relatedTarget) && isPlaying) {
+          const tourVideo = card.querySelector(".preview-video");
+          if (tourVideo) {
+            tourVideo.pause();
+            isPlaying = false;
+          }
+        }
+      });
+    });
+
+    // Mobile preview settings
+    if (window.innerWidth < 960) {
+      const observer = new IntersectionObserver(
+        (e) => {
+          e.forEach((elem) => {
+            if (elem.intersectionRatio > 0.75) {
+              elem.target.classList.add("focused");
+              const tourVideo = elem.target.querySelector(".preview-video");
+              if (tourVideo) {
+                tourVideo.play();
+              }
+            } else {
+              elem.target.classList.remove("focused");
+              const tourVideo = elem.target.querySelector(".preview-video");
+              if (tourVideo) {
+                tourVideo.pause();
+              }
+            }
+          });
+        },
+        {
+          threshold: 0.75,
+        }
+      );
+      cards.forEach((card) => {
+        observer.observe(card);
+      });
+    }
+  }
+</script>

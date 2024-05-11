@@ -1,0 +1,10 @@
+footer {
+  padding: 0.5rem 1rem;
+  background-color: var(--theme-on-bg);
+  color: var(--theme-on-primary);
+}
+
+footer p {
+  margin: 0;
+  color: inherit;
+}

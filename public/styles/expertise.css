@@ -1,0 +1,20 @@
+.icon-list {
+  list-style: none;
+}
+
+.icon-list>li {
+  padding-left: 1.5em;
+  position: relative;
+  line-height: 1.5;
+}
+
+.icon-list>li>img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1em;
+  height: 1.5em;
+  padding: 0.25em 0;
+  object-fit: contain;
+  box-sizing: border-box;
+}

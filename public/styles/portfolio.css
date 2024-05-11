@@ -1,0 +1,87 @@
+/* Home Portfolio */
+.home__portfolio .portfolio__work {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.home__portfolio .portfolio__card {
+  padding: 1rem;
+  color: white;
+  text-align: center;
+  background: #2b2b2b;
+  background: linear-gradient(-45deg, rgba(45, 67, 92, 1) 20%, rgba(43, 43, 43, 1) 20%, rgba(43, 43, 43, 1) 23%, rgba(91, 27, 27, 1) 23%, rgba(91, 27, 27, 1) 60%, rgba(43, 43, 43, 1) 60%, rgba(43, 43, 43, 1) 63%, rgba(40, 65, 47, 1) 63%);
+  border-radius: 0.5rem;
+  transition: 250ms all;
+}
+
+.home__portfolio .portfolio__card:hover,
+.home__portfolio .portfolio__card.focused {
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.5);
+  transform: scale(102%);
+  transition: 250ms all;
+}
+
+.home__portfolio .portfolio__card .preview {
+  width: 100%;
+  padding-bottom: 52.9948%;
+  position: relative;
+  overflow: hidden;
+  transition: 150ms all;
+}
+
+.home__portfolio .portfolio__card:hover .preview,
+.home__portfolio .portfolio__card.focused .preview {
+  margin: -1rem 0 0 -1rem;
+  width: calc(100% + 2rem);
+  padding-bottom: calc(52.9948% + 0.7949rem);
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  transition: 150ms all;
+}
+
+.portfolio__card .preview img,
+.portfolio__card .preview video {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  left: 0;
+  top: 0;
+}
+
+.home__portfolio .portfolio__card .description {
+  margin-bottom: 1rem;
+  transition: 150ms all;
+}
+
+.home__portfolio .portfolio__card h3,
+.home__portfolio .portfolio__card p {
+  color: white;
+}
+
+.home__portfolio .portfolio__card h3 {
+  margin: 0.5em 0 0.5em;
+  font-size: var(--font-size-base);
+}
+
+.home__portfolio .portfolio__card p {
+  font-size: var(--font-size-sm);
+}
+
+@media screen and (max-width: 1440px) {
+  .home__portfolio .portfolio__work {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .home__portfolio .portfolio__work {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .home__portfolio .portfolio__work {
+    grid-template-columns: 1fr;
+  }
+}
