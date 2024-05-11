@@ -118,8 +118,7 @@ import Container from "../components/Container.astro";
         }
       });
       card.addEventListener("mouseout", (e) => {
-        if (card.contains(e.fromElement) && !card.contains(e.relatedTarget) && isPlaying) {
-          console.log("should stop playing video?");
+        if (!card.contains(e.relatedTarget) && isPlaying) {
           const tourVideo = card.querySelector(".preview-video");
           if (tourVideo) {
             tourVideo.pause();
