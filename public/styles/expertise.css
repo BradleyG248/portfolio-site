@@ -1,5 +1,6 @@
 .icon-list {
   list-style: none;
+  column-count: 3;
 }
 
 .icon-list>li {
@@ -8,13 +9,27 @@
   line-height: 1.5;
 }
 
-.icon-list>li>img {
+.icon-list>li::before {
+  content: url('/assets/expertise/verified.svg');
   position: absolute;
-  top: 0;
+  line-height: 0;
+  top: calc((1.5em - 1.2rem) / 2);
   left: 0;
-  width: 1em;
-  height: 1.5em;
-  padding: 0.25em 0;
+  width: 1.2rem;
+  height: 1.2rem;
   object-fit: contain;
   box-sizing: border-box;
+}
+
+@media screen and (max-width: 991px) {
+  .icon-list {
+    column-count: 2;
+    padding-left: 1em;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .icon-list {
+    column-count: 1;
+  }
 }
