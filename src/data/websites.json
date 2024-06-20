@@ -1,0 +1,59 @@
+[
+  {
+    "id": "gammie",
+    "name": "Gammie Homecare",
+    "url": "https://gammie.com/",
+    "hasTour": true,
+    "tags": [
+      "Ecommerce",
+      "Web Application"
+    ]
+  },
+  {
+    "id": "alphaseo",
+    "name": "ALPHA SEO",
+    "url": "https://alphaseo.webmarkets.ai/",
+    "hasTour": true,
+    "tags": [
+      "Artificial Intelligence",
+      "Web Application"
+    ]
+  },
+  {
+    "id": "westside",
+    "name": "Westside Pizza",
+    "url": "https://westsidepizza.com/",
+    "hasTour": true,
+    "tags": [
+      "Franchise",
+      "Business Website"
+    ]
+  },
+  {
+    "id": "idid",
+    "name": "Independent Doctors of Idaho",
+    "url": "https://independentdocsid/.com",
+    "hasTour": true,
+    "tags": [
+      "Web Directory"
+    ]
+  },
+  {
+    "id": "crosstown",
+    "name": "Cross Town Movers",
+    "url": "https://crosstownmovers.net/",
+    "hasTour": false,
+    "tags": [
+      "Business Website"
+    ]
+  },
+  {
+    "id": "tvh",
+    "name": "Treasure Valley Hospital",
+    "url": "https://treasurevalleyhospital.com/",
+    "hasTour": false,
+    "tags": [
+      "Web Directory"
+    ]
+  }
+]

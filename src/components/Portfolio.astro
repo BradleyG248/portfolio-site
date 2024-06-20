@@ -1,95 +1,59 @@
 ---
-import Container from "./Container.astro";
+import Container from './Container.astro';
+import websites from '../data/websites.json';
+console.log(websites);
 ---
 
 <Container>
   <section class="home__portfolio">
     <h2>Portfolio</h2>
     <div class="portfolio__work">
-      <div class="portfolio__card" id="gammie">
-        <div class="preview">
-          <img loading="lazy" src="/assets/portfolio/gammie/thumbnail.jpg" alt="Gammie Homecare Homepage" />
-          <video playsinline muted loop preload="none" class="preview-video">
-            <source src="/assets/portfolio/gammie/tour.webm" type="video/webm" />
-          </video>
-        </div>
-        <h3>Gammie Homecare</h3>
-        <div class="description">
-          <p>Ecommerce</p>
-          <p>Web Application</p>
-        </div>
-        <div class="links">
-          <a href="https://gammie.com/" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
-        </div>
-      </div>
-      <div class="portfolio__card" id="alphaseo">
-        <div class="preview">
-          <img loading="lazy" src="/assets/portfolio/alphaseo/thumbnail.jpg" alt="" />
-          <video playsinline muted loop preload="none" class="preview-video">
-            <source src="/assets/portfolio/alphaseo/tour.webm" type="video/webm" />
-          </video>
-        </div>
-        <h3>Alpha SEO</h3>
-        <div class="description">
-          <p>Artificial Intelligence</p>
-          <p>Web Application</p>
-        </div>
-        <div class="links">
-          <a href="https://alphaseo.webmarkets.ai/" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
-        </div>
-      </div>
-      <div class="portfolio__card" id="westside">
-        <div class="preview">
-          <img loading="lazy" src="/assets/portfolio/westside/thumbnail.jpg" alt="" />
-          <video playsinline muted loop preload="none" class="preview-video">
-            <source src="/assets/portfolio/westside/tour.webm" type="video/webm" />
-          </video>
-        </div>
-        <h3>Westside Pizza</h3>
-        <div class="description">
-          <p>Franchise</p>
-          <p>Website</p>
-        </div>
-        <div class="links">
-          <a href="https://westsidepizza.com" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
-        </div>
-      </div>
-      <div class="portfolio__card" id="westside">
-        <div class="preview">
-          <img loading="lazy" src="/assets/portfolio/idid/thumbnail.jpg" alt="Independent Doctors of Idaho Homepage" />
-          <video playsinline muted loop preload="none" class="preview-video">
-            <source src="/assets/portfolio/idid/tour.webm" type="video/webm" />
-          </video>
-        </div>
-        <h3>Independent Doctors of Idaho</h3>
-        <div class="description">
-          <p>Web Directory</p>
-        </div>
-        <div class="links">
-          <a href="https://independentdocsid.com" target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">Website</a>
-        </div>
-      </div>
+      {
+        websites.map((website) => (
+          <div class="portfolio__card" id={website.id}>
+            <div class="preview">
+              <img loading="lazy" src={`/assets/portfolio/${website.id}/thumbnail.jpg`} alt={`${website.name} Homepage`} />
+              {website.hasTour && (
+                <video playsinline muted loop preload="none" class="preview-video">
+                  <source src={`/assets/portfolio/${website.id}/tour.webm`} type="video/webm" />
+                </video>
+              )}
+            </div>
+            <h3>{website.name}</h3>
+            <div class="description">
+              {website.tags.map((tag) => (
+                <p>{tag}</p>
+              ))}
+            </div>
+            <div class="links">
+              <a href={website.url} target="_blank" rel="noopener noreferrer" class="btn-secondary btn-solid">
+                Website
+              </a>
+            </div>
+          </div>
+        ))
+      }
     </div>
   </section>
 </Container>
 <link rel="stylesheet" href="/styles/portfolio.css" />
 <script>
-  const cards = document.querySelectorAll(".portfolio__card");
+  const cards = document.querySelectorAll('.portfolio__card');
   if (cards) {
     cards.forEach((card) => {
       let isPlaying = false;
-      card.addEventListener("mouseover", (e) => {
+      card.addEventListener('mouseover', (e) => {
         if (e.target == e.currentTarget && !isPlaying) {
-          const tourVideo = card.querySelector(".preview-video");
+          const tourVideo = card.querySelector('.preview-video');
           if (tourVideo) {
             tourVideo.play();
             isPlaying = true;
           }
         }
       });
-      card.addEventListener("mouseout", (e) => {
+      card.addEventListener('mouseout', (e) => {
         if (!card.contains(e.relatedTarget) && isPlaying) {
-          const tourVideo = card.querySelector(".preview-video");
+          const tourVideo = card.querySelector('.preview-video');
           if (tourVideo) {
             tourVideo.pause();
             isPlaying = false;
@@ -104,14 +68,14 @@ import Container from "./Container.astro";
         (e) => {
           e.forEach((elem) => {
             if (elem.intersectionRatio > 0.75) {
-              elem.target.classList.add("focused");
-              const tourVideo = elem.target.querySelector(".preview-video");
+              elem.target.classList.add('focused');
+              const tourVideo = elem.target.querySelector('.preview-video');
               if (tourVideo) {
                 tourVideo.play();
               }
             } else {
-              elem.target.classList.remove("focused");
-              const tourVideo = elem.target.querySelector(".preview-video");
+              elem.target.classList.remove('focused');
+              const tourVideo = elem.target.querySelector('.preview-video');
               if (tourVideo) {
                 tourVideo.pause();
               }
