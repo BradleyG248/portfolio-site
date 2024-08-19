@@ -28,6 +28,8 @@
   --section-alt-width: 1160px;
   /* Base Settings */
   font-size: 20px;
+  scroll-behavior: smooth;
+  scroll-padding: var(--section-spacing);
 }
 
 /* Base Styles */
